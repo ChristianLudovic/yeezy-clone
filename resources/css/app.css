@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    src:url('/fonts/IBMPlexMono/IBMPlexMono-Medium.ttf') format('truetype'),
+        url('/fonts/IBMPlexMono/IBMPlexMono-Bold.ttf') format('truetype'),
+         url('/fonts/IBMPlexMono/IBMPlexMono-SemiBold.ttf') format('truetype'),
+
+         url('/fonts/IBMPlexMono/IBMPlexMono-Regular.ttf') format('truetype'),
+         url('/fonts/IBMPlexMono/IBMPlexMono-Light.ttf') format('truetype'),
+         url('/fonts/IBMPlexMono/IBMPlexMono-ExtraLight.ttf') format('truetype'),
+         url('/fonts/IBMPlexMono/IBMPlexMono-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
