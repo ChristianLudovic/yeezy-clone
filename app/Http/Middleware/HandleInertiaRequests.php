@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\CartItem;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -35,7 +36,8 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-
+            // partager globalement le nombre total de produit dans la carte
+            'cartCount' => CartItem::where('session_id', session()->getId())->sum('quantity'),
         ];
     }
 }

@@ -1,5 +1,6 @@
 import Layout from "@/Layouts/Layout";
 import { useState } from "react";
+import { router } from '@inertiajs/react'
 
 interface ProductType {
     product: {
@@ -11,6 +12,13 @@ interface ProductType {
 export default function Page({product} : ProductType ){
 
     const [imageError, setImageError] = useState(false)
+
+    const handleAddToCart = () => {
+        router.post(route('cart.store'), {
+            product_id: product.id,
+            quantity: 1
+        })
+    }
 
     return (
         <Layout>
@@ -29,10 +37,13 @@ export default function Page({product} : ProductType ){
 
                 <p className="text-center w-full">{product.name}</p>
                 <div className="w-full flex items-center justify-center py-11">
-                    <svg className="icon transition-opacity duration-300 h-[24px] w-[24px] " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M12 18L12 6" stroke="black" stroke-width="2" stroke-linecap="round"></path>
-                        <path d="M6 12H18" stroke="black" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
+                    <button onClick={handleAddToCart}>
+                        <svg className="icon transition-opacity duration-300 h-[24px] w-[24px] " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M12 18L12 6" stroke="black" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M6 12H18" stroke="black" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+
                 </div>
 
             </div>

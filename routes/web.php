@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -17,9 +18,11 @@ Route::get('/', function(){
     ]);
 });
 
-Route::get('/cart', function(){
-    return Inertia::render('Cart/Page');
-});
+Route::get('/cart', [CartItemController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartItemController::class, 'store'])->name('cart.store');
+Route::patch('/cart/{id}', [CartItemController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{id}', [CartItemController::class, 'destroy'])->name('cart.destroy');
+
 
 Route::get('/{id}', [ProductController::class, 'show'])->name('product');
 
