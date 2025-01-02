@@ -23,7 +23,7 @@ export default function Page({ cartItems }) {
                             {cartItems.map((cartItem) => (
                                 <div
                                     className="flex justify-between items-center"
-                                    key={cartItem.id} // Utiliser une clé unique basée sur l'ID
+                                    key={cartItem.id}
                                 >
                                     <img
                                         src={

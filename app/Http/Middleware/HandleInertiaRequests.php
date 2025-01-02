@@ -36,7 +36,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            // partager globalement le nombre total de produit dans la carte
+            // share globally the number of product in the cart
             'cartCount' => CartItem::where('session_id', session()->getId())->sum('quantity'),
         ];
     }

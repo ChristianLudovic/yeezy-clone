@@ -13,7 +13,7 @@ export default function Page({products}) {
 
     return (
         <Layout>
-            <div className='flex flex-wrap space-x-4'>
+            <div className='flex flex-wrap justify-between'>
                 {products.map((product, index) => (
                     <ProductCard productId={product.id} productName={product.name} key={index}/>
                 ))

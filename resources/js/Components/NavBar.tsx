@@ -3,22 +3,42 @@ import BackButton from "./BackButton";
 import { useState } from "react";
 
 export default function NavBar({}){
-
-    const {props} = usePage();
+    //acced to the current page and get the props that where shared globally
+    const {props} = usePage<{ cartCount: number }>();
+    //handle the cartCount property we shared in the Middleware
     const {cartCount} = props;
 
     const page = usePage();
+
+    const [clicked, setClicked] = useState(false);
+
+    const handleClick = () => {
+        setClicked (!clicked);
+    }
 
     const backToPreviewPage = () => {
         window.history.back();
     }
 
     return(
-        <nav className="px-4 flex justify-between h-16">
+        <nav className="px-4 flex justify-between h-16 bg-white">
             <div>
+                {/* */}
                 { (page.url === '/' ?
                     (
-                        <p className="p-4">logo</p>
+                        <div className="flex items-center space-x-6">
+                            <button onClick={handleClick} className="space-y-2 px-4 py-6">
+                                <div className={`w-5 h-[2px] bg-black rounded-full ${clicked ? "rotate-[32deg] origin-top-left transition-transform duration-300" : "duration-300"}`}></div>
+                                <div className={`w-5 h-[2px] bg-black rounded-full ${clicked ? "-rotate-[32deg] origin-bottom-left transition-transform duration-300" : " duration-300"}`}></div>
+                            </button>
+                            {clicked && (
+                                <div className="space-x-8 transition-transform duration-300">
+                                    <Link href="/help">HELP</Link>
+                                    <Link href="/terms">TERMS</Link>
+                                    <Link href="/privacy">PRIVACY</Link>
+                                </div>
+                            )}
+                        </div>
                     ) : (
                         <BackButton
                             className="flex items-center justify-center p-4"

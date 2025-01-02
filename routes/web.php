@@ -1,21 +1,31 @@
 <?php
 
 use App\Http\Controllers\CartItemController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
-use App\Models\Post;
+use App\Models\CartItem;;
 use App\Models\product;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function(){
     $products = product::all();
+    $cartItems = CartItem::where('session_id', session()->getId())->sum('quantity');
     return Inertia::render('Page',[
         'products' => $products,
+        'cartCount' => $cartItems,
     ]);
+});
+
+Route::get('/help', function(){
+    return Inertia::render('Help/Page');
+});
+
+Route::get('/terms', function(){
+    return Inertia::render('Terms/Page');
+});
+
+Route::get('/privacy', function(){
+    return Inertia::render('Privacy/Page');
 });
 
 Route::get('/cart', [CartItemController::class, 'index'])->name('cart.index');
@@ -26,6 +36,6 @@ Route::delete('/cart/{id}', [CartItemController::class, 'destroy'])->name('cart.
 
 Route::get('/{id}', [ProductController::class, 'show'])->name('product');
 
-//Route::get('/help', )
+
 
 
