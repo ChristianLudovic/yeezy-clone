@@ -44,7 +44,7 @@ export default function NavBar({}){
                             className="flex items-center justify-center p-4"
                             onClick={backToPreviewPage}
                         >
-                            <svg className="w-6 h-6 transform rotate-180 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <svg className="w-7 h-7 transform rotate-180 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M10 6L16 12" stroke="black" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M10 18L16 12" stroke="black" stroke-width="2" stroke-linecap="round"></path>
                             </svg>

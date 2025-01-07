@@ -32,14 +32,15 @@ class CartItemController extends Controller
         $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
+            'size' => 'required|integer|min:1'
         ]);
 
         $sessionId = session()->getId();
-        logger("Session ID: " . $sessionId); // Vérifiez si l'ID est généré correctement
 
         $cartItem = CartItem::where([
             'session_id' => $sessionId,
-            'product_id' => $validated['product_id']
+            'product_id' => $validated['product_id'],
+            'size' => $validated['size']
         ])->first();
 
         if ($cartItem) {
@@ -49,7 +50,8 @@ class CartItemController extends Controller
             CartItem::create([
                 'session_id' => $sessionId,
                 'product_id' => $validated['product_id'],
-                'quantity' => $validated['quantity']
+                'quantity' => $validated['quantity'],
+                'size' => $validated['size']
             ]);
         }
 
@@ -70,7 +72,8 @@ class CartItemController extends Controller
             ->firstOrFail();
 
         $validated = $request->validate([
-            'quantity' => 'required|integer|min:1'
+            'quantity' => 'required|integer|min:1',
+            'size' => 'required|integer|in:1,2,3',
         ]);
 
         $cartItem->update($validated);

@@ -17,11 +17,7 @@ export default function ProductCard({productId, productName}:productType){
             className="flex flex-col max-w-[146.49px] w-full block"
         >
             <img
-                src={imageError
-                    ? `/storage/products/0${productId}.png`
-                    : `/storage/products/0${productId}.webp`
-                }
-                onError={() => setImageError(true)}
+                src={`/storage/products/${productId}.png`}
                 alt="product 01"
                 className='w-[146.49px] h-[146.49px] object-cover'
             />

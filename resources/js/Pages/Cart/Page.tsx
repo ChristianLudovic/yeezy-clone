@@ -1,18 +1,23 @@
 import Layout from "@/Layouts/Layout";
-import { useState } from "react";
+import { router } from '@inertiajs/react'
 
 export default function Page({ cartItems }) {
-    const [imageError, setImageError] = useState(false);
 
     const incrementQuantity = (cartItem) => {
-        cartItem.quantity += 1; // Exemple simplifié, ajustez selon votre gestion d'état réel
+        cartItem.quantity += 1;
     };
 
-    const decrementQuantity = (cartItem) => {
+    const handleRemoveToCart = (cartItem) => {
         if (cartItem.quantity > 1) {
             cartItem.quantity -= 1;
         }
-    };
+        /*else{
+            router.post(route('cart.destroy'), {
+                product_id: product.id,
+            })
+        }*/
+
+    }
 
     return (
         <Layout>
@@ -26,12 +31,7 @@ export default function Page({ cartItems }) {
                                     key={cartItem.id}
                                 >
                                     <img
-                                        src={
-                                            imageError
-                                                ? `/storage/products/0${cartItem.product_id}.png`
-                                                : `/storage/products/0${cartItem.product_id}.webp`
-                                        }
-                                        onError={() => setImageError(true)}
+                                        src={`/storage/products/${cartItem.product_id}.png`}
                                         alt={`product ${cartItem.product_id}`}
                                         className="max-w-[216px] w-full object-cover"
                                     />
@@ -42,13 +42,13 @@ export default function Page({ cartItems }) {
                                         </div>
                                         <div className="flex items-center justify-between w-full">
                                             <span>SIZE</span>
-                                            <span>{cartItem.size || "N/A"}</span>
+                                            <span>{cartItem.size}</span>
                                         </div>
                                         <div className="flex justify-between items-center">
                                             <span>QTY</span>
                                             <div className="flex space-x-1 items-center">
                                                 <button
-                                                    onClick={() => decrementQuantity(cartItem)}
+                                                    onClick={() => handleRemoveToCart(cartItem)}
                                                     className="p-1 cursor-pointer"
                                                 >
                                                     -

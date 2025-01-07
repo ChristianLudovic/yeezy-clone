@@ -19,11 +19,9 @@ Route::get('/', function(){
 Route::get('/help', function(){
     return Inertia::render('Help/Page');
 });
-
 Route::get('/terms', function(){
     return Inertia::render('Terms/Page');
 });
-
 Route::get('/privacy', function(){
     return Inertia::render('Privacy/Page');
 });

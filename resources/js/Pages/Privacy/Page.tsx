@@ -29,7 +29,9 @@ export default function Page(){
                         <p className="mb-6">To provide the Services, we collect and have collected over the past 12 months personal information about you from a variety of sources,
                             as set out below. The information that we collect and use varies depending on how you interact with us.
                         </p>
-                        <p className="mb-6">In addition to the specific uses set out below, we may use information we collect about you to communicate with you, provide or improve or improve the Services, comply with any applicable legal obligations, enforce any applicable terms of service, and to protect or defend the Services, our rights, and the rights of our users or others.
+                        <p className="mb-6">In addition to the specific uses set out below, we may use information we collect about you to communicate with you, provide or improve or
+                            improve the Services, comply with any applicable legal obligations, enforce any applicable terms of service, and to protect or defend the Services, our rights,
+                            and the rights of our users or others.
                         </p>
                     </div>
                 </div>
